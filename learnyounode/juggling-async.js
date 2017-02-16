@@ -19,7 +19,6 @@ function getStream(url, index) {
             return
         })
         response.on('data', (chunk) => {
-            console.log(`STREAM ${index}: ${chunk}`)
             chunks.push(chunk)
         })
         response.on('end', () => {
@@ -28,9 +27,6 @@ function getStream(url, index) {
             )
             results[index] = output
             counter++
-            console.log(results)
-            console.log(`INDEX: ${index}`)
-            console.log(`COUNTER: ${counter}`)
             if (counter === 3) {
                 printResults(results)
             }
@@ -40,6 +36,5 @@ function getStream(url, index) {
 }
 
 for (let i = 0; i < 3; i++) {
-    getStream(process.argv[1 + i], i)
-    // getStream(process.argv[2 + i], i)
+    getStream(process.argv[2 + i], i)
 }
